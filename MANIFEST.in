@@ -1,0 +1,3 @@
+graft itemcatalog/static
+graft itemcatalog/templates
+global-exclude *.pyc
