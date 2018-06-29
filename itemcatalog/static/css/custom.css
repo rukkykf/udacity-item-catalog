@@ -1,0 +1,112 @@
+body{
+    background-color: #DDDDDD;
+}
+
+nav{
+    background-color: #021F40;
+}
+
+.container{
+    padding-top: 20px;
+}
+
+nav h1, button{
+    color: #FFFFFF; 
+    margin-bottom: 0px;
+}
+
+nav h1 a{
+    text-decoration: none;
+    color: #FFFFFF; 
+}
+
+nav button{
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #E34D24;
+}
+.nav-container{
+    width: 100%;
+    max-width: 960px; 
+    margin: 0 auto;
+}
+
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input, select, textarea{
+    width: 100%; 
+}
+
+textarea{
+    resize: none; 
+}
+
+.item input[type=submit]{
+    display: block;
+}
+.item button{
+    display: block; 
+}
+.no-style-a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.no-style-a:hover{
+    text-decoration: underline; 
+}
+
+#categories-list, #items-list{
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+#categories-list .no-style-a, #items-list .no-style-a{
+    color: #E34D24; 
+}
+
+.comments-section{
+    margin-top: 20px;
+}
+
+.comments-section h4{
+    margin-bottom: 10px;
+}
+
+.comment, .new-comment{
+    margin: 20px;
+}
+
+.comment p{
+    margin: 0px;
+}
+
+.comment-meta{
+    margin: 0px;
+    color: #E34D24;
+}
+
+.new-comment textarea{
+    overflow: auto;
+    display: block; 
+    width: 100%; 
+    border: 1px solid black; 
+}
+
+#main-content{
+    background-color: #FFFFFF;
+    padding: 20px 20px; 
+}
+
+#item-mod{
+    margin: 0px;
+    color: #E34D24
+}
+
+@media screen and (max-width: 960px){
+    
+}

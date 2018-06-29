@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from itemcatalog.db import db
 
 class User(db.Model):
@@ -8,8 +9,7 @@ class User(db.Model):
 
 class Password(db.Model):
     userid = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False, primary_key=True)
-    salt = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(120), nullable=False, unique=True)
+    pw_hash = db.Column(db.String(256), nullable=False, unique=True)
 
 
 class Item(db.Model):
