@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from dbmodels import User
+from dbmodels import User, Password
 
 
 class RegistrationForm(FlaskForm):
@@ -14,9 +14,27 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired("You must repeat password"),
                                        EqualTo('password', "Passwords must match")])
-    submit = SubmitField('Register')
+    submit = SubmitField('Sign Up')
 
     def validate_email(self, email):
-        emailad = User.query.filter_by(email=email.data).first()
-        if emailad is not None:
-            raise ValidationError('Please use a different email address.')
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('This email address has been registered.')
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[
+                        DataRequired("You must enter an email address"), Email("Enter valid email address")])
+    password = PasswordField('Password', validators=[
+                             DataRequired("Password is required")])
+    submit = SubmitField('Login')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError("Invalid email address or password")
+        else:
+            # if the user exists in the user table, they may have authenticated with Google,
+            # Check the password table to see if they even have a password
+            psw = Password.query.filter_by(userid=user.id).first()
+            if psw is None:
+                raise ValidationError("Try Logging in with your google account :)")

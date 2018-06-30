@@ -6,10 +6,6 @@
 
     <section class="row" id="main-content">
       <div class="six columns">
-        {% for message in form.username.errors %}
-            <div>{{ message }}</div>
-        {% endfor %}
-
          {% for message in form.email.errors %}
              <div>{{ message }}</div>
          {% endfor %}
@@ -17,14 +13,10 @@
          {% for message in form.password.errors %}
             <div>{{ message }}</div>
         {% endfor %}
+            <div> {{ error }} </div>
 
-        {% for message in form.password2.errors %}
-        <div>{{ message }}</div>
-        {% endfor %}
-          <form action="{{url_for('auth.register')}}" method="post">
+          <form action="{{url_for('auth.login')}}" method="post">
             {{ form.csrf_token }}
-            {{ form.username.label }}
-            {{ form.username }}
 
             {{ form.email.label }}
             {{ form.email }}
@@ -32,16 +24,13 @@
             {{ form.password.label }}
             {{ form.password }}
 
-            {{ form.password2.label }}
-            {{ form.password2 }}
-
             {{ form.submit }}
 
           </form>
 
           <div class="fg">
 
-                <a href="{{url_for('google.gconnect')}}" class="button button-primary no-style-a" id="googlebtn">Sign Up With Your Google Account</a>
+                <a href="{{url_for('google.gconnect')}}" class="button button-primary no-style-a" id="googlebtn">Login With Your Google Account</a>
 
           </div>
       </div>
