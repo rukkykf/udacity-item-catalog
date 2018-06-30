@@ -2,8 +2,14 @@
     <div class="nav-container clearfix">
       <header class="u-pull-left"><h1><a href="{{url_for('hello')}}">Catalog App</a></h1></header>
 
-      <button class="u-pull-right">Login</button>
-      <button class="u-pull-right">View Profile</button>
+      {% if g.user %}
+         <a class="button u-pull-right" href="{{url_for('auth.logout')}}">Logout</a>
+        <a class="button u-pull-right" href="{{url_for('user.profile')}}">View Profile</a>
+      {% else %}
+        <a class="button u-pull-right" href="{{url_for('auth.login')}}">Login</a>
+      {% endif %}
+      <a class="button u-pull-right" href="#">Browse Catalog</a>
+
     </div>
 
 </nav>

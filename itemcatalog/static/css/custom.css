@@ -10,7 +10,7 @@ nav{
     padding-top: 20px;
 }
 
-nav h1, button{
+nav h1, .button{
     color: #FFFFFF;
     margin-bottom: 0px;
 }
@@ -20,7 +20,7 @@ nav h1 a{
     color: #FFFFFF;
 }
 
-nav button{
+nav .button{
     margin-top: 10px;
     margin-left: 10px;
     background-color: #E34D24;
