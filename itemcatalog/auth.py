@@ -44,7 +44,7 @@ def register():
 @bp.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    error = None
+    error = ""
 
     if form.validate_on_submit():
         # Get the user
@@ -74,8 +74,9 @@ def gconnect():
     email = resp.json()["email"]
     name = resp.json()["given_name"]
 
+
     # Check if this user already exists.
-    user = User.query.filter_by(email=email.data).first()
+    user = User.query.filter_by(email=email).first()
 
     if user is not None:
         session["user_id"] = user.id
