@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="container u-cf">
+
+    <section class="row" id="main-content">
+      <div class="six columns">
+
+        <h2> Welcome {{ g.user.username }}  </h2>
+
+        <h3> Here's a list of items you've created </h3>
+
+        <a class="button button-primary" href="#"> Create new Item </a>
+        <a class="button button-primary" href="#"> View Catalog </a>
+
+      </div>
+
+
+    </section>
+    </div>
+
+{% endblock %}

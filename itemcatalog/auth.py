@@ -59,7 +59,7 @@ def login():
 
         if is_valid:
             session["user_id"] = user.id
-            return redirect(url_for('hello'))
+            return redirect(url_for('user.profile'))
 
         error = "Invalid login"
     return render_template('auth/login.html', form=form, error=error)
@@ -85,7 +85,7 @@ def gconnect():
         db.session.add(user)
         db.session.commit()
 
-    return redirect(url_for('hello'))
+    return redirect(url_for('user.profile'))
 
 
 @bp.before_app_request
