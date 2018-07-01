@@ -29,3 +29,8 @@ def show_category(categoryid):
 
     return render_template("catalog/category.html", items=items,
                            category=category, num=num, categories=categories)
+
+
+@bp.route("/errormessage/<string:error>/")
+def error(error):
+    return render_template("error.html", error=error)
