@@ -7,9 +7,14 @@
     <section class="row" id="main-content">
       <div class="six columns">
 
-        <h2> Welcome {{ g.user.username }}  </h2>
+        <h2> Welcome <em>{{ g.user.username }}</em>  </h2>
 
         <h3> Here's a list of items you've created </h3>
+
+          {% for item in items %}
+              <p><a class='button button-primary' id="orange-button" href="{{url_for('items.show_item', itemid=item.id)}}">
+            {{item.name}} </a></p>
+          {% endfor %}
 
         <a class="button button-primary" href="{{url_for('items.create_item')}}"> Create new Item </a>
 

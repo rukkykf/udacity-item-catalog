@@ -45,6 +45,9 @@ textarea{
     resize: none;
 }
 
+#orange-button{
+    background-color: #E34D24;
+}
 .item input[type=submit]{
     display: block;
 }

@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from dbmodels import User, Password
-
+from dbmodels import User, Password, Category
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[
@@ -42,11 +41,11 @@ class LoginForm(FlaskForm):
                     "Try Logging in with your google account :)")
 
 
-class newItemForm(FlaskForm):
+class ItemForm(FlaskForm):
     name = StringField('Item Name', validators=[
                        DataRequired("You must enter the name of the item")])
     description = TextAreaField('Description', validators=[
-                                DataRequired("You must enter a description for theitem")])
-    category = SelectField('Category', choices=[], validators=[
-                           DataRequired("Please select a category")])
+                                DataRequired("You must enter a description for the item")])
+    category = SelectField('Category', validators=[
+                           DataRequired("Please select a category")], coerce=int)
     submit = SubmitField('Create Item')
