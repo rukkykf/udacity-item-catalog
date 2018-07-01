@@ -1,7 +1,7 @@
 import functools
 
 from db import db
-from dbmodels import User, Password
+from dbmodels import User, Password, Like
 from forms import RegistrationForm, LoginForm
 from passwordmng import set_password, check_password
 
@@ -96,11 +96,16 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = User.query.filter_by(id=user_id).first()
+        likes = Like.query.filter_by(userid=g.user.id).all()
+        g.userlikes = []
+        for like in likes:
+            g.userlikes.append(like.itemid)
 
 
 @bp.route('/logout/')
 def logout():
     session.clear()
+    g.userlikes = None
     return redirect(url_for('auth.login'))
 
 
