@@ -15,12 +15,17 @@
         </ul>
       </div>
 
-      <div class="four columns">
-          <h3>Latest Items</h3>
+      <div class="eight columns">
+          <h3> {{category.name}} <em>({{num}} items)</em></h3>
           <ul id="items-list">
+
+            {% if g.user %}
+              <a class="button button-primary" href="{{url_for('items.create_item')}}">Add New Item</a>
+            {% endif %}
+
             {% for item in items %}
-            <li><a class='no-style-a' href="{{url_for('items.show_item', itemid=item.id)}}">{{item.name}}
-              <em> ({{item.category.name}}) </em> </a></li>
+                <li><a class='no-style-a' href="{{url_for('items.show_item', itemid=item.id)}}">{{item.name}}
+                </a></li>
             {% endfor %}
 
          </ul>
