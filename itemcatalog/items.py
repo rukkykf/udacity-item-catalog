@@ -1,8 +1,8 @@
 from flask import (Blueprint, redirect,
-                   render_template, request, session, url_for, jsonify, g)
+                   render_template, request, url_for, g)
 
 from forms import ItemForm, DeleteItemForm, EditItemForm
-from dbmodels import User, Item, Comment, Category, Like
+from dbmodels import Item, Category, Like
 from db import db
 
 from auth import login_required

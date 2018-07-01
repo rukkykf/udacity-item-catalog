@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
-from flask_wtf.csrf import CSRFProtect
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField, HiddenField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from dbmodels import User, Password, Category, Item
+from dbmodels import User, Password, Category
 
 
 class RegistrationForm(FlaskForm):

@@ -6,7 +6,7 @@ from forms import RegistrationForm, LoginForm
 from passwordmng import set_password, check_password
 
 from flask import (Blueprint, redirect,
-                   render_template, request, session, url_for, jsonify, g)
+                   render_template, session, url_for, g)
 
 from flask_dance.contrib.google import make_google_blueprint, google
 

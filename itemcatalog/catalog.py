@@ -1,7 +1,5 @@
-from flask import (Blueprint, redirect,
-                   render_template, request, session, url_for, jsonify, g)
+from flask import Blueprint, render_template
 
-from db import db
 from dbmodels import Category, Item
 
 bp = Blueprint("catalog", __name__)
