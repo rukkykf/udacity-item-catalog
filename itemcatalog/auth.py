@@ -74,7 +74,6 @@ def gconnect():
     email = resp.json()["email"]
     name = resp.json()["given_name"]
 
-
     # Check if this user already exists.
     user = User.query.filter_by(email=email).first()
 
@@ -99,7 +98,7 @@ def load_logged_in_user():
         g.user = User.query.filter_by(id=user_id).first()
 
 
-@bp.route('/logout')
+@bp.route('/logout/')
 def logout():
     session.clear()
     return redirect(url_for('auth.login'))
