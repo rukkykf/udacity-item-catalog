@@ -6,6 +6,7 @@ from dbmodels import Category
 
 bp = Blueprint("catalog", __name__)
 
+
 @bp.route("/")
 @bp.route("/catalog/")
 def show_catalog():

@@ -3,6 +3,7 @@ from itemcatalog.auth import login_required
 from dbmodels import Item
 bp = Blueprint('user', __name__)
 
+
 @bp.route('/profile/')
 @login_required
 def profile():
