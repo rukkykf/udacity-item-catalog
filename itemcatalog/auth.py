@@ -22,7 +22,6 @@ gbp = make_google_blueprint(
 @bp.route('/register/', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    print "Receiving post method"
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
 
