@@ -26,6 +26,16 @@ class Item(db.Model):
     userid = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship('User', backref=db.backref('items', lazy=True))
 
+    @property
+    def serialize(self):
+        """Return object in easily serializable format"""
+        return {
+            "name": self.name,
+            "description": self.description,
+            "Published On": self.pubdate,
+            "Category": self.category.name
+        }
+
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)

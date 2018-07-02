@@ -71,6 +71,9 @@ def delete_item(itemid):
         error = None
 
         # ensure the user is not trying to edit the wrong item
+        # without this check, it would be easy for someone
+        # to modify the action attribute on the form and succesfully
+        # edit the wrong item
         if form.itemid.data != itemid:
             error = "You're trying to edit the wrong item, please try again"
 

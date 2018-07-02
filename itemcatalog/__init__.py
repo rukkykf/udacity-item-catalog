@@ -51,4 +51,7 @@ def create_app(test_config=None):
     from . import items
     app.register_blueprint(items.bp)
 
+    from . import itemsapi
+    app.register_blueprint(itemsapi.bp)
+
     return app
