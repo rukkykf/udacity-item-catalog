@@ -4,6 +4,7 @@ from itemcatalog.dbmodels import Category
 import click
 from flask.cli import with_appcontext
 
+
 @click.command('init-data')
 @with_appcontext
 def init_data_command():
@@ -11,8 +12,10 @@ def init_data_command():
     create_data()
     click.echo("Initialized the database data")
 
+
 def init_app(app):
     app.cli.add_command(init_data_command)
+
 
 def create_data():
     categories = [

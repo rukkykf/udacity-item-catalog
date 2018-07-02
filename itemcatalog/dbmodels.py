@@ -21,7 +21,8 @@ class Item(db.Model):
     description = db.Column(db.Text)
     categoryid = db.Column(db.Integer, db.ForeignKey("category.id"))
     pubdate = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    category = db.relationship('Category', backref=db.backref('items', lazy=True))
+    category = db.relationship('Category',
+                               backref=db.backref('items', lazy=True))
 
     userid = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship('User', backref=db.backref('items', lazy=True))

@@ -136,4 +136,3 @@ def edit_item(itemid):
         return redirect(url_for("items.show_item", itemid=itemid))
 
     return render_template("items/edititem.html", form=form, item=item)
-
