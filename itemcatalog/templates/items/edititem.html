@@ -30,7 +30,7 @@
             {{ form.category }}
 
             {{ form.submit }}
-
+            <a class="button button-primary" href="{{url_for('items.show_item', itemid=item.id)}}"> Cancel </a>
           </form>
 
       </div>
