@@ -4,10 +4,11 @@ from flask import (Blueprint, redirect,
 from forms import ItemForm, DeleteItemForm, EditItemForm
 from dbmodels import Item, Category, Like
 from db import db
-
+from validate_item_ud import ValidateItemUD
 from auth import login_required
 
 bp = Blueprint("items", __name__)
+ud_validator = ValidateItemUD()
 
 
 @bp.route("/item/new/", methods=["GET", "POST"])
@@ -63,23 +64,17 @@ def unlike_item(itemid):
 def delete_item(itemid):
 
     form = DeleteItemForm()
-    form.itemid = itemid
 
     item = Item.query.filter_by(id=itemid).first()
+
+    if request.method == "GET":
+        ud_validator.item = item
+        ud_validator.user = g.user
 
     if form.validate_on_submit():
         error = None
 
-        # ensure the user is not trying to edit the wrong item
-        # without this check, it would be easy for someone
-        # to modify the action attribute on the form and succesfully
-        # edit the wrong item
-        if form.itemid.data != itemid:
-            error = "You're trying to edit the wrong item, please try again"
-
-        # ensure the user is authorized to edit this item
-        if g.user.id != item.user.id:
-            error = "You are not authorized to edit this item"
+        error = ud_validator.is_valid(item)
 
         if error is not None:
             return redirect(url_for("catalog.error", error=error))
@@ -107,7 +102,8 @@ def edit_item(itemid):
     item = Item.query.filter_by(id=itemid).first()
 
     if request.method == "GET":
-        form.itemid = itemid
+        ud_validator.item = item
+        ud_validator.user = g.user
         form.name.data = item.name
         form.description.data = item.description
 
@@ -115,13 +111,7 @@ def edit_item(itemid):
                              for b in Category.query.order_by("name")]
 
     if form.validate_on_submit():
-        error = None
-
-        if form.itemid.data != itemid:
-            error = "You're trying to edit the wrong item, please try again"
-
-        if g.user.id != item.user.id:
-            error = "You are not authorized to edit this item"
+        error = ud_validator.is_valid(item)
 
         if error is not None:
             return redirect(url_for("catalog.error", error=error))

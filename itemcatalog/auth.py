@@ -97,6 +97,7 @@ def load_logged_in_user():
         g.user = User.query.filter_by(id=user_id).first()
         likes = Like.query.filter_by(userid=g.user.id).all()
         g.userlikes = []
+        g.item_ed = -1
         for like in likes:
             g.userlikes.append(like.itemid)
 
