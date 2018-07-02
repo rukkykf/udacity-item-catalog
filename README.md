@@ -36,7 +36,7 @@ If you're using a Windows machine, this application might not work if you try to
 -   Open up your git bash terminal, cd into the directory you want to place the Vagrant machine in
 -   Use vagrant to install bento/ubuntu-16.04 and setup port forwarding for common development ports (5000, 8080, 8000) . I won't tell you how to do that, try Google :)
 - Start your vagrant machine, cd into the folder you want to create your repository in and then continue with the getting started instructions above.
--
+
 ## Modules
 The various views in the application are organized into blueprints.
 
