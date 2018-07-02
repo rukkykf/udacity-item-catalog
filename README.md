@@ -39,6 +39,7 @@ If you're using a Windows machine, this application might not work if you try to
 -
 ## Modules
 The various views in the application are organized into blueprints.
+
 **__init__.py**:
 This module contains the app factory. Here the app is created, configured and the various blueprints are registered.
 
