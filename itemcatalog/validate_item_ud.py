@@ -4,7 +4,8 @@ class ValidateItemUD():
 
     There are two goals with this validation.
     First, to ensure the user making the changes is the creator of the item.
-    Second, to ensure the item being changed, is the item the user wanted to change.
+    Second, to ensure the item being changed,
+    is the item the user wanted to change.
     This way simply changing the action attribute on the html form
     won't lead to a valid update.
 
