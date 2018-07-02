@@ -16,6 +16,10 @@ class ValidateItemUD():
 
     def is_valid(self, newitem):
         error = None
+
+        if self.item is None or self.user is None:
+            return error
+
         if self.item.id != newitem.id:
             error = "You are trying to edit the wrong item"
 
