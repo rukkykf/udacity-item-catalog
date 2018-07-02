@@ -76,13 +76,13 @@ def gconnect():
     # Check if this user already exists.
     user = User.query.filter_by(email=email).first()
 
-    if user is not None:
-        session["user_id"] = user.id
-    else:
+    if user is None:
         # create a new user and then log user in
         user = User(username=name, email=email)
         db.session.add(user)
         db.session.commit()
+
+    session["user_id"] = user.id
 
     return redirect(url_for('user.profile'))
 
