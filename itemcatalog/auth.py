@@ -12,8 +12,8 @@ from flask_dance.contrib.google import make_google_blueprint, google
 
 bp = Blueprint('auth', __name__)
 gbp = make_google_blueprint(
-    client_id="421504894578-8kvmfrgrpbibbppnumcvn6nm1hkqk670.apps.googleusercontent.com",   # NOQA
-    client_secret="e1regt3-GhiMbI-dmIhJjEQ9",
+    client_id="change to clientId",   # NOQA
+    client_secret="change to clientSecret later",
     scope=["openid", "email"],
     redirect_url="/gconnect/"
 )
